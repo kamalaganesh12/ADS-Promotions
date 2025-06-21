@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AppAd Network – Promote & Monetize Your Apps</title>
+
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="Promote your apps, monetize with ads, and grow your user base across websites and mobile apps.">
+  <meta name="keywords" content="app promotion, mobile ads, in-app monetization, analytics, app growth platform">
+  <meta property="og:title" content="AppAd Network – Promote & Monetize Your Apps">
+  <meta property="og:description" content="Revolutionize your app growth with smart campaigns, high-performing ads & real-time analytics.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=AppAd+Network">
+  <meta property="og:url" content="https://your-domain.com/">
+
+  <style>
+    :root {
+      --primary: #10B981;
+      --dark: #0F172A;
+      --light: #F9FAFB;
+      --text: #1F2937;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: .8rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    header a {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .features, .apps-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .feature {
+      max-width: 300px;
+    }
+    .apps-showcase {
+      background: var(--light);
+    }
+    .apps-grid img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform .3s;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    }
+    .apps-grid img:hover {
+      transform: scale(1.05);
+    }
+    blockquote {
+      max-width: 600px;
+      margin: 2rem auto;
+      font-style: italic;
+      color: #374151;
+    }
+    .cta {
+      background: var(--primary);
+      color: white;
+    }
+    .cta a {
+      background: white;
+      color: var(--primary);
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    form input, form button {
+      padding: .8rem 1rem;
+      margin: .5rem 0;
+      width: 100%;
+      max-width: 320px;
+    }
+    form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .features, .apps-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <!-- Firebase v9 SDK -->
+  <script type="module">
+    // TODO: Replace with your own Firebase configuration
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.24.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.sendSignup = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('user-email').value;
+      if (!email) {
+        alert('Please enter your email');
+        return;
+      }
+      try {
+        await addDoc(collection(db, 'signups'), {
+          email,
+          createdAt: serverTimestamp()
+        });
+        alert('Thank you! We will be in touch.');
+        document.getElementById('user-email').value = '';
+      } catch(err) {
+        console.error('Error writing to Firestore', err);
+        alert('Oops! Something went wrong.');
+      }
+    };
+  </script>
+
+</head>
+<body>
+
+  <header>
+    <h1>Promote Your App. Monetize Everywhere.</h1>
+    <p>Target the right users with smarter campaigns, profitable ads & real-time insights.</p>
+    <a href="https://your-domain.com/signup" target="_blank">Get Started Free</a>
+  </header>
+
+  <section>
+    <h2>All-in-One App Growth Platform</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>🚀 Promote Your Apps</h3>
+        <p>Launch targeted ad campaigns across apps & websites to maximize installs.</p>
+      </div>
+      <div class="feature">
+        <h3>💰 Monetize with Ads</h3>
+        <p>Integrate fast-loading ad units and maximize your earnings.</p>
+      </div>
+      <div class="feature">
+        <h3>📊 Real-Time Analytics</h3>
+        <p>Track installs, revenue, & ROI with powerful dashboards and reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="apps-showcase">
+    <h2>Apps We Power</h2>
+    <div class="apps-grid">
+      <img src="https://via.placeholder.com/100?text=FitTrack" alt="FitTrack Health">
+      <img src="https://via.placeholder.com/100?text=BudgetPro" alt="BudgetPro Finance">
+      <img src="https://via.placeholder.com/100?text=SnackIt" alt="SnackIt Foodie">
+      <img src="https://via.placeholder.com/100?text=MindEase" alt="MindEase Wellness">
+    </div>
+  </section>
+
+  <section>
+    <h2>Testimonials</h2>
+    <blockquote>
+      “Our app installs tripled in 2 months and our ad revenue soared. A key part of our growth stack.”<br>
+      <footer>— Jane Doe, Growth Lead @ BudgetPro</footer>
+    </blockquote>
+  </section>
+
+  <section class="cta" id="get-started">
+    <h2>Stay Updated & Get Early Access</h2>
+    <p>Sign up now to join our beta and be first to launch your growth campaigns:</p>
+    <form onsubmit="sendSignup(event)">
+      <input id="user-email" type="email" placeholder="Your email address" required />
+      <button type="submit">Join Beta</button>
+    </form>
+    <p>Or <a href="https://your-domain.com/signup" style="color: white; text-decoration: underline;">create your account now →</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AppAd Network. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
